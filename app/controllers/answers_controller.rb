@@ -5,11 +5,12 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer.question = @question
 
-    if @answer.save!
+    if @answer.save
       flash[:notice] = 'Answer submitted'
       redirect_to question_path(params[:question_id])
     else
-      render :index
+      flash[:notice] = 'Answer too short'
+      redirect_to question_path(params[:question_id])
     end
   end
 

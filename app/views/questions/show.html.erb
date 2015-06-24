@@ -9,6 +9,8 @@
     <%= f.submit "Submit", class: "button" %>
   <% end %>
 
+<ul>
 <% @answers.each do |answer| %>
-<%= answer.body %>
+<li><%= answer.body %></li>
 <% end %>
+</ul>
