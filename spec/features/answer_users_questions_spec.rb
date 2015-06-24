@@ -8,7 +8,7 @@ feature "As a user
 I want to answer another user's question
 So that I can help them solve their problem" do
   scenario "User submits an answer to a question" do
-    visit 'questions/1/answers'
+    visit 'questions/1'
     fill_in "Body", with: "This is an answer to you question and now you have all the answers that you need so stop asking questions."
     click_button "Submit"
     expect(page).to have_content("This is an answer")

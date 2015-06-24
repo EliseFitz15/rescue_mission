@@ -1,9 +1,4 @@
 class AnswersController < ApplicationController
-  def index
-    @question = Question.find(params[:question_id])
-    @answers = @question.answers
-    @answer = Answer.new
-  end
 
   def create
     @answer = Answer.new(answer_params)
@@ -12,7 +7,7 @@ class AnswersController < ApplicationController
 
     if @answer.save!
       flash[:notice] = 'Answer submitted'
-      redirect_to question_answers_path(params[:question_id])
+      redirect_to question_path(params[:question_id])
     else
       render :index
     end
