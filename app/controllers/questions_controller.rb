@@ -18,7 +18,20 @@ class QuestionsController < ApplicationController
    end
 
   end
+  def edit
+    @question = Question.find(params[:id])
+  end
+  def update
+    @question = Question.find(params[:id])
 
+    if @question.update(question_params)
+      flash[:notice] = "Question is updated, i love you."
+      redirect_to question_path
+    else
+      flash[:error] = @question.errors.full_messages.join(". ")
+      render :edit
+    end
+  end
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
