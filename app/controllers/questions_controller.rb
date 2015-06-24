@@ -16,10 +16,13 @@ class QuestionsController < ApplicationController
      flash[:error] = @question.errors.full_messages.join(". ")
      render :new
    end
+
   end
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
+    @answers = Answer.where(question_id: params[:id])
   end
 
   def destroy
@@ -30,7 +33,7 @@ class QuestionsController < ApplicationController
 
   protected
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :question_id)
   end
 
 end
