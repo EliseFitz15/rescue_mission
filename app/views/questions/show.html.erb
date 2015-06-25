@@ -12,6 +12,16 @@
 
 <ul>
 <% @answers.each do |answer| %>
-<li><%= answer.body %></li>
+  <li>
+    <% if answer.best == false %>
+    <%= "This is the best answer" %>
+    <% end %>
+  </li>
+  <li><%= answer.body %></li>
+  <li>
+    <%= form_for [@question, answer] do |f| %>
+    <%= f.submit "Best", class: "button" %>
+    <% end %>
+  </li>
 <% end %>
 </ul>

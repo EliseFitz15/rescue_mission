@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
-    @answers = Answer.where(question_id: params[:id]).order(created_at: :desc)
+    @answers = Answer.where(question_id: params[:id]).order(:best)
   end
 
   def destroy
